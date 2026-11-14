@@ -213,10 +213,18 @@ button:focus-visible,a:focus-visible,[role=button]:focus-visible{outline:3px sol
 .rums34-dashboard .rums34-hero-copy{position:relative;z-index:2}
 .rums34-dashboard .rums34-eyebrow{color:#8cddff;letter-spacing:1.8px}
 .rums34-dashboard .rums34-hero-art{position:relative;z-index:1;border:1px solid rgba(132,220,255,.48);background:radial-gradient(circle at 40% 32%,rgba(129,214,255,.18),rgba(11,31,55,.32) 65%);box-shadow:0 0 0 18px rgba(88,189,240,.055),0 0 0 45px rgba(88,189,240,.03),inset 0 0 30px rgba(110,212,255,.12),0 0 32px rgba(68,182,246,.16)}
-.rums34-dashboard .rums34-hero-art span{display:inline-block;transform-origin:50% 50%;animation:rums346-ball-spin 24s linear infinite alternate;filter:drop-shadow(0 13px 13px rgba(0,0,0,.38))}
+.rums34-dashboard .rums34-hero-art span{display:inline-block;transform-origin:50% 50%;animation:rums346-ball-spin 96s linear infinite;backface-visibility:visible;filter:drop-shadow(0 13px 13px rgba(0,0,0,.38))}
 .rums34-dashboard .rums34-hero-art::before,.rums34-dashboard .rums34-hero-art::after{content:'';position:absolute;inset:-11px;border:1px dashed rgba(128,221,255,.32);border-radius:50%;animation:rums346-ring-spin 45s linear infinite;pointer-events:none}
 .rums34-dashboard .rums34-hero-art::after{inset:-24px;border-style:solid;border-color:transparent rgba(233,72,83,.65) transparent rgba(116,212,255,.3);animation-duration:32s;animation-direction:reverse}
-@keyframes rums346-ball-spin{to{transform:rotate(360deg)}}
+/* Vier gleich lange Drehphasen à 24 Sekunden; die Rotationsachse wechselt
+   zwischen horizontal, vertikal und diagonal, ohne Temposprung. */
+@keyframes rums346-ball-spin{
+  0%{transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
+  25%{transform:rotateX(360deg) rotateY(0deg) rotateZ(0deg)}
+  50%{transform:rotateX(360deg) rotateY(360deg) rotateZ(0deg)}
+  75%{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+  100%{transform:rotateX(720deg) rotateY(360deg) rotateZ(360deg)}
+}
 @keyframes rums346-ring-spin{to{transform:rotate(360deg)}}
 @keyframes rums346-shimmer{0%,100%{background-position:100% 0}50%{background-position:0 0}}
 @media(max-width:570px){.rums34-dashboard .rums34-hero-art{display:grid;width:76px;height:76px;position:absolute;right:8px;top:12px;opacity:.23;margin:0}.rums34-dashboard .rums34-hero-art span{font-size:42px}.rums34-dashboard .rums34-hero-copy{padding-right:15px}.rums34-dashboard .rums34-hero::after{right:-170px}}
